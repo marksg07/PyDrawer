@@ -22,8 +22,10 @@ rect = pg.Rect(50, 50, 50, 50)
 basefont = pg.font.SysFont('Monospaced', 100)
 text = basefont.render('hello', 1, (150, 50, 60))
 fxnlist = []
+
+#keep running dis 
 while(1):
-    screen.fill(pg.Color('white'))
+    screen.fill(pg.Color('white')) #refresh the screen
     screen.blit(text, (400, 400))
 
     '''tabs section -- refer to above diagram'''
@@ -37,14 +39,13 @@ while(1):
                 exit(0)
         elif event.type == pg.MOUSEBUTTONDOWN:
             x,y = pg.mouse.get_pos()
-            fxnlist.append([x, y])
-            #draw.rect(screen,pg.Color('red'),(200,150,100,50))
-            #exit(0)
+            fxnlist.append([x, y]) #if key is press down, append mouse position to be drawn
     if pg.key.get_pressed()[pg.K_e]:  # alt way if multiple keys held
         print 'e down'
-    rect.center = pg.mouse.get_pos()
+    rect.center = pg.mouse.get_pos() #keep square at center of mouse
     draw.rect(screen,pg.Color('red'),rect, 0)
-    for fxn in fxnlist:
+    
+    for fxn in fxnlist: #draw squares at all the mouse positions
         draw.rect(screen,pg.Color('red'),(fxn[0],fxn[1],50,50))
     pg.display.update()
     clock.tick(60)
