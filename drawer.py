@@ -10,6 +10,13 @@ screen = pg.display.set_mode(screensize)
 clock = pg.time.Clock()
 ###  DONE  ###
 
+######################
+# draw tabs          # 
+# red - square       #
+# blue - circle      # 
+# green - ?          #  
+######################
+    
 i = 1
 rect = pg.Rect(50, 50, 50, 50)
 basefont = pg.font.SysFont('Monospaced', 100)
@@ -18,6 +25,12 @@ fxnlist = []
 while(1):
     screen.fill(pg.Color('white'))
     screen.blit(text, (400, 400))
+
+    '''tabs section -- refer to above diagram'''
+    draw.rect(screen,pg.Color('red'),(0,0,150,50)) 
+    draw.rect(screen,pg.Color('blue'),(150,0,150,50)) 
+    draw.rect(screen,pg.Color('green'),(300,0,150,50))
+    
     for event in pg.event.get():
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_SPACE:
