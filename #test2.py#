@@ -1,0 +1,4 @@
+import pyglet as pg
+
+window = pg.window.Window()
+label = 

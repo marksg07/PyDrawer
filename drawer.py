@@ -7,21 +7,22 @@ screensize = (800, 600)
 ###  PYGAME SETUP  ###
 pg.init()
 screen = pg.display.set_mode(screensize)
+def getscreen():
+    return screen
 clock = pg.time.Clock()
 ###  DONE  ###
 
 ######################
-# draw tabs          # 
+# draw tabs          #
 # tab 1 - square     #
-# tab 2 - circle     # 
-# tab 3 - ?          #  
+# tab 2 - circle     #
+# tab 3 - ?          #
 ######################
 
 
 #Color options
 r1 = (210,69,69)
 r2 = (210,69,126)
-
 
 i = 1
 rect = pg.Rect(50, 50, 50, 50)
@@ -35,13 +36,13 @@ mode = -1 #0 - rectangle, 1 - circle
 blitlist.append([text,0, 0])
 blitlist.append([text2,185, 0])
 
-#keep running dis 
+#keep running dis
 while(1):
     screen.fill(pg.Color('white')) #refresh the screen
-    
+
     rect.center = pg.mouse.get_pos() #keep square at center of mouse
     draw.rect(screen,pg.Color('red'),rect, 0)
-    
+
     '''tabs section -- refer to above diagram'''
 
     if 150 > rect.center[0] > 0 and 50 > rect.center[1] > 0:
@@ -52,9 +53,9 @@ while(1):
          draw.circle(screen, pg.Color('red'), (225,0), 50)
     else:
         draw.circle(screen, r2, (225,0), 50)
- 
+
     '''event handling'''
-    
+
     for event in pg.event.get():
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_SPACE:
@@ -70,7 +71,7 @@ while(1):
    ''' if pg.key.get_pressed()[pg.K_e]:  # alt way if multiple keys held
         print 'e down'
     '''
-    
+
     for fxn in fxnlist: #draw squares at all the mouse positions
         if fxn[2]==0:
             draw.rect(screen,pg.Color('red'),(fxn[0],fxn[1],50,50))
@@ -79,7 +80,7 @@ while(1):
 
     for text in blitlist: #insert text at location
         screen.blit(text[0], (text[1], text[2]))
-    
-        
+
+
     pg.display.update()
     clock.tick(60)
